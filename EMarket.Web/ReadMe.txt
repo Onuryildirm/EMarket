@@ -32,3 +32,28 @@ appsettings.json'a gel.
     sonra update-database
 
     startup daha sonra ConfigureServices içi services.AddIdentity<ApplicationUser, IdentityRole>() haline getirilir.
+
+    _ViewImports'da @using EMarket.ApplicationCore.Entities eklenir ve _LoginPartial'da
+    @inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager haline getirilir.
+EMarket.ApplicationCore Entities'e BaseEntity ve Category Class'ý acýlýr
+
+Infrastructure
+ApplicationDbContext'e
+public DbSet<Category> Categories { get; set; } eklenir.
+ daha sonra
+ override OnModelCreating oluþturulur.
+
+ EMarket.Infrastructure->Data->Config klasörü aç CategoryConfiguration classý aç
+
+ public class CategoryConfiguration : IEntityTypeConfiguration<Category> haline gelir ve Configura olarak implement edilir.
+
+ Infrastructure'da
+ add-migration CategoryEntity
+
+ An operation was scaffolded that may result in the loss of data. Please review the migration for accuracy.
+hatasý alýndýðý için migrations klasörü silinir veri tabaný ssms'den silinir.
+
+clean solution ve yeniden
+add-migration Identity denir 0'dan add-migrations olmus olur.
+update-database
