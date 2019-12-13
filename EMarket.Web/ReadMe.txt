@@ -1,3 +1,14 @@
+https://colorlib.com/preview/theme/wines/
+https://themeforest.net/item/marten-pet-food-ecommerce-bootstrap4-template/22441520
+https://colorlib.com/preview/theme/littlecloset/
+https://colorlib.com/preview/theme/winter/
+https://colorlib.com/preview/theme/onetech/
+https://colorlib.com/preview/theme/shoppers/index.html
+https://colorlib.com/preview/theme/shop/#women
+https://colorlib.com/etc/fashe/index.html
+
+https://themehunt.com/item/1527339-ezone-free-multipurpose-ecommerce-bootstrap4-template
+
 EMarket.Web olarak ASP core 2.2 seçilerek mvc individual seçilir.
 class lib EMarket.ApplicationCore olarak açýlýr classý sil .Net Core 2.2'ye çek
 class lib EMarket.Infrastructure olarak açýlýr classý sil .Net Core 2.2ye çek
