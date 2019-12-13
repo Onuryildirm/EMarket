@@ -57,3 +57,27 @@ hatasý alýndýðý için migrations klasörü silinir veri tabaný ssms'den silinir.
 clean solution ve yeniden
 add-migration Identity denir 0'dan add-migrations olmus olur.
 update-database
+
+ApplicationCore->Interface içerisine new item-interface IRepository.cs açýlýr.Ýçerisine <T> tipler girilir.
+
+infrastructure->Data->add class EfRepository class'ý acýlýr ve
+bu hale getirilir.
+public class EfRepository<T> : IRepository<T> where T : BaseEntity
+
+ IRepository<T> implement edilecek.
+
+ EfRepository class içerisi doldurulur.
+
+ SERVÝSLER'DE APPLICATIONCORE'da yer alýr.
+
+ EMarket.ApplicationCore->interfaces-> ICategoryService adýnda bir interface acýlýr. Ýçi doldurulur.Bunu uyguluyoruz.
+ Servicese CategoryService adýnda class açýlýr.
+ public class CategoryService : ICategoryService haline getirilir ve implement edilir.
+ Veri tabanýna elle iki kategori girdik.
+
+ Web->startup->
+             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped<ICategoryService, CategoryService>();
+
+ EMarket.Web->home controller indexe service'leri verdik.
+ gotoview->model olustur.
