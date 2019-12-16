@@ -92,3 +92,21 @@ public class EfRepository<T> : IRepository<T> where T : BaseEntity
 
  EMarket.Web->home controller indexe service'leri verdik.
  gotoview->model olustur.
+
+
+ --------16.12.2019--------
+ infrastructure'da
+ update-database -migration:0
+
+ daha sonra startup.cs'de
+ Configure 0içerisine en tepeye; using ile scope içerisinde gerekli servis alýnýr.
+ using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope()) metodunu yoruma alýyoruz.
+
+ Market.Infrastructure.Data'ya ApplicationDbContextSeed class'ý açýlýr. içine kategoriler eklenir.
+
+ EMarket.Web->Program.cs'ye CreateWebHostBuilder deðiþiklik yapýlýr 2 satýra bölünür.arasýna using eklenir.
+
+ EMarket.Infrastructure.Data-ApplicationDbContextSeed'e usermanager ve rolemanager eklenir.
+
+ Program.cs'de  usermanager ve rolemanager tanýmlanýr.
+
