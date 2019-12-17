@@ -13,7 +13,7 @@ namespace EMarket.Web.Controllers
     {
         public IActionResult Index([FromServices] ICategoryService categoryService)
         {
-            return View(categoryService.ListCategories());
+            return View();
         }
 
         public IActionResult Privacy()

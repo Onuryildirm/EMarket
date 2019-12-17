@@ -110,7 +110,7 @@ public class EfRepository<T> : IRepository<T> where T : BaseEntity
 
  Program.cs'de  usermanager ve rolemanager tanýmlanýr.
 
- --------17.12.2019-------- PART 1 -----------
+ --------17.12.2019--------
  ApplicationDbContextSeed Seed'metodunun adý deðiþtirilerek SeedProductsAndCategories olarak deðiþtirilir.
   SeedUserAsync 'nin yerine SeedUsersandRolesAsync yapýldý.
   Program.cs'e git Seed ve SeedUserAsync'i deðiþtir.
@@ -145,3 +145,14 @@ public class EfRepository<T> : IRepository<T> where T : BaseEntity
   EMarket.Infrastructure'da
   bundan sonra update-database -migration:0
   update-database
+
+
+  shop.html içi kopyalanýr.2.bir layout acýlýr.içi silinerek hepsi yapýþtýrýlýr.
+  assets'lere yollarý verilir ~/ olarak
+  daha sonra homecontrollerýn indexine layout'u veririz.hangisini kullanacaðýmýzý
+  breadcrumblý div'i kýs ve sil 287.satýr
+  categories sidebar hariç diðerleri silinir.
+
+  EMarket.Web altýna ViewModels klasörü açýyoruz.
+  Ýçerisine HomeIndexViewModel classý açýlýp içerisi doldurulur.
+  ViewImports'a @using EMarket.Web.ViewModels eklenir
