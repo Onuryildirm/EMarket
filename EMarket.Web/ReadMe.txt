@@ -156,3 +156,5 @@ public class EfRepository<T> : IRepository<T> where T : BaseEntity
   EMarket.Web altýna ViewModels klasörü açýyoruz.
   Ýçerisine HomeIndexViewModel classý açýlýp içerisi doldurulur.
   ViewImports'a @using EMarket.Web.ViewModels eklenir
+
+  web'e Interfaces ve Services classlarý acýlýr.
