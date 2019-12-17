@@ -110,3 +110,38 @@ public class EfRepository<T> : IRepository<T> where T : BaseEntity
 
  Program.cs'de  usermanager ve rolemanager tanýmlanýr.
 
+ --------17.12.2019-------- PART 1 -----------
+ ApplicationDbContextSeed Seed'metodunun adý deðiþtirilerek SeedProductsAndCategories olarak deðiþtirilir.
+  SeedUserAsync 'nin yerine SeedUsersandRolesAsync yapýldý.
+  Program.cs'e git Seed ve SeedUserAsync'i deðiþtir.
+
+  EMarket.ApplicationCore.Entities'e product class'ý acýlýr baseentity'den miras alýr.Ýçerisi doldurulur.
+  ApplicationDbContext.cs'e public DbSet<Product> Products { get; set; } eklenir
+
+    EMarket.ApplicationCore.Entities'de category classýna 
+  public List<Product> Products { get; set; } eklenir.
+
+  EMarket.Infrastructure.Data.Config'e prodyctconfiguration adýnda class acýlýr.Ýçerisi doldurulur.
+  add-migration products
+  update-database
+
+  EMarket.ApplicationCore klasör aç Constants adýnda..
+  class aç içine AuthorizationConstants bu isimle.
+  içini doldur.
+
+  ApplicationDbContextSeed 
+  "admin" yerine AuthorizationConstants.Roles.ADMINISTRATOR gelmeli
+  password yerine AuthorizationConstants.DEFAULT_PASSWORD
+
+  applicationDbContextSeed'e 
+  private static readonly Random rnd = new Random();
+  public static List<Category> Categories(int count = 5, int productCountPerCategory = 99) 
+  
+  metodu yazýlýr
+
+  ve seed içerisinde
+  if (!context.Categories.Any()) içeriði deðiþtirilir.
+
+  EMarket.Infrastructure'da
+  bundan sonra update-database -migration:0
+  update-database
