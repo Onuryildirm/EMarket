@@ -158,3 +158,12 @@ public class EfRepository<T> : IRepository<T> where T : BaseEntity
   ViewImports'a @using EMarket.Web.ViewModels eklenir
 
   web'e Interfaces ve Services classlarý acýlýr.
+
+
+  ---EKSÝK----
+
+  --------18.12.2019---------
+
+  ViewModel içerisine CategoryViewModel class'ý acýlýr.
+  -----EKSÝK-----
+
