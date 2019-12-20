@@ -167,3 +167,4 @@ public class EfRepository<T> : IRepository<T> where T : BaseEntity
   ViewModel içerisine CategoryViewModel class'ý acýlýr.
   -----EKSÝK-----
 
+----------19.12.2019---------
