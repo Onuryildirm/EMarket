@@ -18,6 +18,7 @@ using EMarket.ApplicationCore.Interfaces;
 using EMarket.ApplicationCore.Services;
 using EMarket.Web.Interfaces;
 using EMarket.Web.Services;
+using EMarket.Infrastructure.Services;
 
 namespace EMarket.Web
 {
@@ -33,17 +34,6 @@ namespace EMarket.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDistributedMemoryCache();
-
-            services.AddSession(options =>
-            {
-                // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
-                options.Cookie.HttpOnly = true;
-                // Make the session cookie essential
-                options.Cookie.IsEssential = true;
-            });
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -61,17 +51,30 @@ namespace EMarket.Web
                 .AddDefaultTokenProviders();
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-            services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IHomeIndexViewModelService, HomeIndexViewModelService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
-            services.AddResponseCaching();
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<IBasketService, BasketService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            //using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             //{
             //    using (var db = scope.ServiceProvider.GetService<ApplicationDbContext>())
             //    {
@@ -94,9 +97,9 @@ namespace EMarket.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseAuthentication();
             app.UseSession();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
