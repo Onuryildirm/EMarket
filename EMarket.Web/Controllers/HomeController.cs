@@ -33,8 +33,7 @@ namespace EMarket.Web.Controllers
         {
             basketService.AddItemToBasket(1, "Kola", 3.5m, "", 3);
             ViewBag.items = basketService.BasketItems;
-            //ViewBag.ad = HttpContext.Session.GetString("adlar");
-            //List<string> isimler = HttpContext.Session.Get<List<string>>("adlar");
+            string value = HttpContext.Session.GetString("basket");
             return View();
         }
 
